@@ -9,9 +9,7 @@
                 "opera":"76",
                 "safari":"15"
             }
-        }]
-    ],
-    "plugins": [
-        
+        }],
+        "@babel/react"
     ]
 }
