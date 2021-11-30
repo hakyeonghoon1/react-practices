@@ -1,7 +1,7 @@
 import React from "react";
 import CardList from "./CardList";
 import cards from './assets/json/data.json';
-import './assets/css/styles.css';
+import Styles from './assets/css/styles.css';
 
 export default function(){
     console.log(cards);

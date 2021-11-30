@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = function(env){
-    const entry = path.resolve(`src/${env.src}/index.js`);
+    const entry = path.resolve(`src/index.js`);
     return{
         mode:'development',
         entry:entry,
