@@ -8,19 +8,26 @@ export default class extends Component {
             val: this.props.begin
         }
     }
+    onClickButton(e){
+        //this.state.value = this.state.value + this.props.step;        
+        this.setState({
+            val: this.state.val + this.props.step
+        })
+        
+    }
 
     render() {
         return (
             <div>
-                <button onClick={(e) => {
-                    this.setState({
-                        val: this.state.val + this.state.step
-                    })
-                }}>
+                <button onClick={this.onClickButton.bind(this)}>
                     <strong>+</strong>
                 </button>
                 {' '}
                 <span>{this.state.val}</span>
+                {' '}
+                <button>
+                    <strong>-</strong>
+                </button>
             </div>
         );
     }

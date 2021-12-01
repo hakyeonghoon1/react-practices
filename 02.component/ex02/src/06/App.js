@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBell, faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import {faBell, faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
 
 // addtional... 꼭 필요한건 아니다
 import {library} from '@fortawesome/fontawesome-svg-core';
