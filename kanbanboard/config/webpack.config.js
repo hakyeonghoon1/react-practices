@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = function(env){
-    const entry = path.resolve(`src/${env.src}/index.js`);
+    const entry = path.resolve(`src/index.js`);
     return{
         mode:'development',
         entry:entry,
@@ -22,7 +22,7 @@ module.exports = function(env){
                 test:/\.(sa|sc|c)ss$/i,
                 use:[
                     'style-loader',
-                    {loader:'css-loader',options:{modules:'true'}},
+                    {loader:'css-loader',options:{modules:true}},
                     'sass-loader'
                 ] //순서 중요
             },{

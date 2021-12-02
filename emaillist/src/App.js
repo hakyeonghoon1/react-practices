@@ -16,7 +16,7 @@ export default function(){
     return(
         <div className='App'>
             <RegisterForm/>
-            <SearchBar callback={notifyKeywordChanged}/>
+            <SearchBar keyword={keyword} callback={notifyKeywordChanged}/>
             <Emaillist keyword={keyword} emails={data}/>
         </div>
     )
