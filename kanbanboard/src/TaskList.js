@@ -13,6 +13,10 @@ export default function({tasks}){
                           name={task.name}/>
                 )}
             </ul>
+            <input type='text' 
+                   className={styles['TaskList--add-task']}
+                   placeholder=''
+            />
         </div>
     )
 }
