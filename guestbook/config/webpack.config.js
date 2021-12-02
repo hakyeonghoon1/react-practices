@@ -22,7 +22,7 @@ module.exports = function(env){
                 test:/\.(sa|sc|c)ss$/i,
                 use:[
                     'style-loader',
-                    {loader:'css-loader',options:{modules:'true'}},
+                    {loader:'css-loader',options:{modules:true}},
                     'sass-loader'
                 ] //순서 중요
             },{
