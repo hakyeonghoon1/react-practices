@@ -11,15 +11,16 @@ ex02
 
 ex03
     1. React Event
-    2. Kanbanboard - ex03, ex04
 
 ex04
     1. state
-    2. ajax 통신
+
 ex05
     Component Lifecycle
 ex06
     Immutability(불변성) of Component
+
+ajax: fetch,axios
 
 emaillist
 gallery

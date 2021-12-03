@@ -10,7 +10,7 @@ ex02 Component - Component Styling(Working with UI)
     -----------------------------------------------
 06. Font Awesome: Working with UI 1
 07. React Modal: Working with UI 2
-08. Material UI: Working with UI 3
+08. Material UI: Working with UI 3(x)
 
 실행
 $ npm run debug src={01|02|03|04|...} css-modules={false|[true]}
