@@ -1,13 +1,13 @@
 const path = require('path');
 
-module.exports = function(env){
-    const entry = path.resolve(`src/index.js`);
+module.exports = (env)=>{
+    
     return{
-        mode:'development',
-        entry:entry,
+        mode:'none',
+        entry:path.resolve(`frontend/src/index.js`),
         output:{
-            path:path.resolve('public'),
-            filename:'bundle.js',
+            path:path.resolve('backend/public'),
+            filename:'assets/js/main.js',
             assetModuleFilename: 'assets/images/[hash][ext]'
         },
         module:{
@@ -16,7 +16,7 @@ module.exports = function(env){
                 exclude:/node_modules/,
                 loader:'babel-loader',
                 options:{
-                    configFile:path.resolve('config/babel.config.json')
+                    configFile:path.resolve('frontend/config/babel.config.json')
                 }
             },{
                 test:/\.(sa|sc|c)ss$/i,
@@ -32,10 +32,11 @@ module.exports = function(env){
         },
         devtool: 'eval-source-map',
         devServer:{
-            //contentBase:path.resolve('public'),
-            host: '0.0.0.0',
+            contentBase: path.resolve('frontend/public'),
+            watchContentBase: true,
+            host: "0.0.0.0",
             port: 9999,
-            //inline: true,
+            inline: true,
             liveReload: true,
             hot: false,
             compress: true,
