@@ -10,7 +10,7 @@ export default function Guestbook() {
 
     useEffect(() => {
         console.log('최초 메세지 리스트 가져오기')
-        fetchMessageList();
+        fetchMessages();
     }, []);
 
     const notifyMessage = {
@@ -27,8 +27,30 @@ export default function Guestbook() {
         }
     }
 
-    const fetchMessageList =()=>{
+    const fetchMessages =async ()=>{
         console.log('message list 가져오기');
+        try{
+            const startNo = messages.length == 0 ? 0 :messages[messages.length-1].no;
+        
+            const response = await fetch(`/api/${startNo}`,{
+                method:'get',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Accept':'application/json'
+                }
+            });
+            if(!response.ok){
+                throw new Error(`${response.status} ${response.statusText}`)
+            }
+            const json = response.json();
+            if(json.result !== 'success'){
+                throw json.message;
+            }
+            console.log(json.data);
+            setMessages([...messages,...json.data]);
+        } catch(err){
+            console.error(err);
+        }
     };
     return (
         <div className={styles.ScrollOuter}>
