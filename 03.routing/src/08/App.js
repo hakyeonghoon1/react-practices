@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
-import {Routes, Route} from 'react-router';
+import {useRoutes} from 'react-router';
 import Main from "./component/Main";
 import Gallery from "./component/Gallery";
 import Guestbook from "./component/Guestbook";
@@ -14,6 +14,22 @@ import Settings from './component/user/Settings'
 import './assets/scss/App.scss';
 
 export default function App() {
+    return useRoutes([
+        {path:'/',element:<Main/>},
+        {path:'gallery',element:<Gallery/>},
+        {path:'guestbook',element:<Guestbook/>},
+        {
+            path:'about',element:<About/>, children:[
+                {path:'me', element:<Me/>},
+                {path:'location', element:<Location/>}
+            ]
+        },
+        {path:'user/join',element:<Join/>},
+        {path:'user/login',element:<Login/>},
+        {path:'user/setttings',element:<Settings/>},
+        {path:'*',element:<Error404/>},
+    ]);
+    /*
     return (
         <Router>
             <Routes>
@@ -31,4 +47,5 @@ export default function App() {
             </Routes>
         </Router>
     );
+    */
 }

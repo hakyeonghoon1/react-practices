@@ -7,6 +7,7 @@ import Guestbook from "./component/Guestbook";
 
 export default function App() {
     return (
+        /*/
         <HashRouter>
             <Routes>
                 <Route path='/' element={<Main/>}/>
@@ -23,6 +24,6 @@ export default function App() {
                 <Route path='guestbook' element={<Guestbook/>}/>
             </Routes>
         </BrowserRouter>
-        /*/
+        //
     );
 }
