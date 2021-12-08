@@ -19,33 +19,37 @@ export default function MessageList({messages, notifyMessage}) {
         e.preventDefault();
         try {
             if(e.target.password.value === '') {
+                console.log(modalData.messageNo,e.target.password.value);
                 return;
             }
+            
+            const response = await fetch(`/api/${modalData.messageNo}`, {
+                method: 'delete',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({password: modalData.password})
+            });
 
-            // const response = await fetch(`/api/${modalData.messageNo}`, {
-            //     method: 'delete',
-            //     header: {
-            //         'Content-Type': 'application/json',
-            //         'Accept': 'application/json'
-            //     },
-            //     body: JSON.stringify({password: modalData.password})
-            // });
+            if(!response.ok) {
+                throw new error(`${response.status} ${response.statusText}`);
+            }
 
-            // if(!response.ok) {
-            //     throw  `${response.status} ${response.statusText}`;
-            // }
-
-            // const jsonResult = response.json;
+            const json = await response.json();
 
 
             // 비밀번호가 틀린 경우
             // jsonResult.data가  null
-            //setModalData(Object.assign({}, modalData, {label:'비밀번호가 일치하지 않습니다.', password: ''}));
+            if(json.data === null){
+                setModalData(Object.assign({}, modalData, {label:'비밀번호가 일치하지 않습니다.', password: ''}));
+                return;
+            }
 
             // 잘 삭제가 된 경우
             // jsonResult.data가 10
             setModalData({isOpen: false, password:''});
-            notifyMessage.delete(modalData.messageNo);
+            notifyMessage.delete(json.data);
         } catch (err) {
             console.error(err);
         }
