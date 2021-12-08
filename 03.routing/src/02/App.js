@@ -6,12 +6,20 @@ import Guestbook from "./component/Guestbook";
 export default function App() {
     const [route, setRoute] = useState({page: '/'});
 
-
+    useEffect(()=>{
+        const handleHashChange = (e)=>setRoute(e.state);
+        //didmount
+        window.addEventListener('popstate',handleHashChange);
+        return ()=>{
+            //unmount
+            window.removeEventListener('popstate',handleHashChange);
+        }
+    },[])
 
     const handleLinkClick = (e) => {
         e.preventDefault();
-        const url = e.target.href;
-        window.history.pushState({page:url},e.target.text);
+        const url = e.target.href.substr(e.target.href.lastIndexOf('/'));
+        window.history.pushState({page:url},e.target.text, url);
         setRoute({page:url});
     }
 /*
@@ -34,7 +42,20 @@ export default function App() {
 */
     return (
         <div>
-            <div>{state.page}</div>
+            {
+                (()=>{
+                    switch(route.page){
+                        case '/':
+                            return <Main/>;
+                        case '/guestbook':
+                            return <Guestbook/>;
+                        case '/gallery':
+                            return <Gallery/>;
+                        default:
+                            return null;
+                     }
+                })()
+            }
             <ul>
                 <li><a href={'/'} onClick={handleLinkClick}>[Main]</a></li>
                 <li><a href={'/gallery'} onClick={handleLinkClick}>[Gallery]</a></li>
